@@ -1,0 +1,37 @@
+<div>
+  <nav>
+     <div class="nav-wrapper">
+       
+       <ul class="header_top_right">
+         <li><a href="badges.html"><i class="material-icons">home</i></a></li>
+         <li><a href="mobile.html"><i class="material-icons">favorite</i></a></li>
+       </ul>
+     </div>
+   </nav>
+</div>
+
+
+
+<div>
+  
+  <FORM>
+    <INPUT TYPE="button" VALUE="Add To Favorites"
+    onClick='window.external.AddFavorite(location.href, document.title);'>
+    </FORM>
+    
+</div>
+
+<form (submit)="fetchWeather(weatherForm.value)" [formGroup]="weatherForm">
+  <span><i class="fas fa-thermometer-quarter"></i></span>
+  <input type="text" name="city" placeholder="Type a city" formControlName="city"/>
+  <input type="submit" [disabled]="!weatherForm.valid"  value="Search" name="submit">
+</form>
+
+<div class="weatherData" *ngIf="weatherData; else showMessage">
+    <p *ngFor="let forecast of weatherData.DailyForecasts">{{forecast.Link}}</p>
+  
+</div>
+
+<ng-template #showMessage>
+  <p>There is no data in the state</p>
+</ng-template>
